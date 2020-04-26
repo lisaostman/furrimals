@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 // components
-import Signup from './components/signIn'
+import Collection from './components/collection'
+import Leaderboard from './components/leaderboard'
 import Navbar from './components/navbar'
 import Home from './components/home'
  
@@ -12,7 +13,7 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      user: "Bob",
+      user: "",
       token: "",
       id: null,
       image: "",
@@ -75,32 +76,34 @@ class App extends Component {
     }
    
     render() {
+      const loggedIn=this.state.loggedIn;
  
         return (
           <div className="App">
-   
-          <Navbar />
+          <Navbar loggedIn={this.state.loggedIn}/>
           <Route
             exact path="/"
             component={() => <Home loggedIn={this.state.loggedIn}  name={this.state.user} />}/>
-            <div className="row mt-5">  
-                <div className="col-md-12">
-                    <h2 className="text-left">Google Login Demo</h2>
-                    <div className="card mt-3">
-                        <div className="card-body">
-                             
-                            <div className="row mt-5 mb-5">
-                                <div className="col-md-4 mt-2 m-auto ">
-                                    <button className="loginBtn loginBtn--google" ref="googleLoginBtn">
-                                        Login with Google
-                                    </button>
-                                </div>    
-                            </div>
-                         
+            <Route
+            exact path="/collection"
+            component={() => <Collection loggedIn={this.state.loggedIn}  email={this.state.email} />}/>
+            <Route
+            exact path="/leaderboard"
+            component={() => <Leaderboard loggedIn={this.state.loggedIn}  email={this.state.email} />}/>
+            {loggedIn ? (
+                      <div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                        ) : (
+                          <div className="col-md-12 text-center"> 
+                              <h2 className="text-center">Welcome to Furrimals!</h2>
+                              Please login below ! 
+                              <br/>
+                                              <button className="loginBtn loginBtn--google btn-success" ref="googleLoginBtn">
+                                                  Login with Google
+                                              </button>
+                          </div>
+                            )}
+            
             </div>
         );
     }

@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: rgb(255, 123, 71);
-  height: 150px;
+  height: auto;
   padding: 20px;
   color: white;
 }
@@ -18,16 +18,30 @@
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
-}
-
 .navbar {
  
   margin-top: auto;
   border-bottom: rgb(235, 250, 151) 10px solid;
   
 }
+
+.btn-warning {
+  padding: 10px 10px 0px 10px;
+  margin: 0px 2px 0px 0px;
+}
+
+.btn-success {
+  border-radius: 20px;
+  padding: 5px 5px 5px 5px;
+  margin-top: 10px;
+}
+
+.form-control {
+  width: 10%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
 #top-filler {
   margin-bottom: auto;
 }

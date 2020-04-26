@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Route, Link } from 'react-router-dom'
 import logo from '../logo.png';
+import { Button } from '@material-ui/core';
 import '../App.css';
-import axios from 'axios'
 
 class Navbar extends Component {
     constructor() {
@@ -35,21 +35,24 @@ class Navbar extends Component {
                     <div className="col-4" >
                         {loggedIn ? (
                             <section className="navbar-section">
-                                <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
+                                <Link to="/" className="btn btn-warning text-secondary">
+                            <span className="text-secondary">home</span>
+                            </Link>
+                                <Link to="/collection" className="btn btn-warning">
+                                <span className="text-secondary">collection</span>
+                                </Link>
+                                <Link to="/leaderboard" className="btn btn-warning">
+                                <span className="text-secondary">leaderboard</span>
+                                </Link>
+                                <Link to="#" className="btn btn-warning" onClick={this.logout}>
                                 <span className="text-secondary">logout</span></Link>
-
                             </section>
                         ) : (
                                 <section className="navbar-section">
-                                    <Link to="/" className="btn btn-link text-secondary">
+                                    <Link to="/" className="btn btn-warning text-secondary">
                                         <span className="text-secondary">home</span>
+                                        {/* <Button color="primary">Hello World</Button> */}
                                         </Link>
-                <Link to="/collection" className="btn btn-link">
-                <span className="text-secondary">collection</span>
-                </Link>
-                <Link to="/leaderboard" className="btn btn-link">
-                <span className="text-secondary">leaderboard</span>
-                </Link>
                                 </section>
                             )}
                     </div>

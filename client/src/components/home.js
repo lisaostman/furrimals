@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import '../App.css';
 
 class Home extends Component {
     constructor() {
@@ -40,12 +41,17 @@ class Home extends Component {
         return (
             <div className="col-4" >
                        {loggedIn ? (
-                            <p>Welcome {name} !</p>
+                            <div className="col-md-12 text-center"> 
+                      <h2 className="text-center">Welcome to Furrimals {name}!</h2>
+                      Enter a shop code below to begin collecting:
+                      <br/>
+                      <textarea className="form-control" aria-label="With textarea"></textarea>
+                                      <button className="loginBtn loginBtn--google btn-success" ref="googleLoginBtn">
+                                          Enter Shop Code
+                                      </button>
+                  </div>
                         ) : (
                                 <p>
-                                    Please Log In!
-                                    {this.props.name}
-                                    {this.props.loggedIn}
                                 </p>
                             )}
                     </div>

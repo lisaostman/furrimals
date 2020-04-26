@@ -41,8 +41,12 @@ function objToSql(ob) {
 
 // Object for all our SQL statement functions.
 var orm = {
-  all: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
+  caughtCreatures: function(userEmail, cb) {
+    var queryString = "SELECT * FROM furrimal_caught";
+    queryString += "INNER JOIN furrimal_animal ON furrimal_animal.animalId=furrimal_caught.animalId";
+    queryString += "INNER JOIN furrimal_user ON furrimal_caught.userId = furrimal_user.userId";
+    queryString += "WHERE furrimal_user.email = ";
+    queryString += userEmail;
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -50,7 +54,20 @@ var orm = {
       cb(result);
     });
   },
-  create: function(table, cols, vals, cb) {
+  find: function(user1, user2, cb) {
+    var queryString = "SELECT * FROM furrimal_friends";
+    queryString += "INNER JOIN furrimal_animal ON furrimal_animal.animalId=furrimal_caught.animalId";
+    queryString += "INNER JOIN furrimal_user ON furrimal_caught.userId = furrimal_user.userId";
+    queryString += "WHERE furrimal_user.email = ";
+    queryString += userEmail;
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+   create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -63,24 +80,6 @@ var orm = {
     console.log(queryString);
 
     connection.query(queryString, vals, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
-      cb(result);
-    });
-  },
-  // An example of objColVals would be {name: panther, sleepy: true}
-  update: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
-
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
-
-    console.log(queryString);
-    connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
