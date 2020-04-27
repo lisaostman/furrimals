@@ -13,6 +13,16 @@ var database = {
       cb(res);
     });
   },
+  shopCode: function(code, cb) {
+    orm.shopCode(code, function(res) {
+      cb(res);
+    });
+  },
+  userFinder: function(user, cb) {
+    orm.shopCode(user, function(res) {
+      cb(res);
+    });
+  },
   delete: function(table, condition, cb) {
     orm.delete(table, condition, function(res) {
       cb(res);

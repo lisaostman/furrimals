@@ -16,6 +16,20 @@ router.post("/api/create", function(req, res) {
   });
 });
 
+router.post("/api/caught", function(req, res) {
+  database.create("furrimal_caught",
+    [
+    "userId",
+    "animalId"
+  ], [
+    req.body.userId,
+    req.body.animalId
+  ], function(result) {
+    // Send back the ID of the new quote
+    res.json({ id: result.insertId });
+  });
+});
+
 // router.put("/api/cats/:id", function(req, res) {
 //   var condition = "id = " + req.params.id;
 
@@ -33,13 +47,34 @@ router.post("/api/create", function(req, res) {
 //   });
 // });
 
-router.get("/collection/api/:email", function(req, res) {
-  let condition = req.params.email;
+router.get("/collection/api", function(req, res) {
+  let condition = req.query.email;
+  console.log(req);
   console.log("reached router back!")
   database.all(condition, function(result) {
     res.json(result);
   });
 });
 
+router.get("/api/code", function(req, res) {
+  let condition = req.query.code;
+  console.log(req.query);
+  console.log("reached router back!")
+  database.shopCode(condition, function(result) {
+    res.json(result);
+  });
+});
+
+router.get("/api/email", function(req, res) {
+  let condition = req.query.email;
+  console.log(req.query);
+  console.log("reached router back!")
+  database.userFinder(condition, function(result) {
+    res.json(result);
+  });
+});
+
 // Export routes for server.js to use.
 module.exports = router;
+
+//http://localhost:3001/collection/api?email=example@live.com

@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import '../App.css';
+import axios from 'axios';
 
 class Home extends Component {
   constructor() {
     super()
+    this.onSubmit = this.onSubmit.bind(this)
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
   }
 
   componentDidMount() {
@@ -34,6 +43,28 @@ class Home extends Component {
 
   }
 
+  onSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.value)
+    axios.get("/api/code?code=" + this.state.value)
+    .then(res => {
+    console.log(res.data[0].animalId)
+    console.log(res.data[0].userId)
+
+    axios.post('/api/caught', {
+      userId: res.data[0].userId,
+      animalId: res.data[0].animalId
+    })
+    .then(function (response) {
+      console.log("axios posted " + response)
+      this.state.value = '';
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+            });
+  }
+
   render() {
     const loggedIn = this.props.loggedIn;
     const name = this.props.name;
@@ -47,7 +78,7 @@ class Home extends Component {
             <form className="ui form">
               <div className="field">
                 <label>Shop Creature Code</label>
-                <input placeholder="Shop Code Here i.e SHOP123" />
+                <input placeholder="Shop Code Here i.e SHOP123"  value={this.state.value} onChange={this.handleChange} />
               </div>
               <div className="field">
                 <div className="ui checkbox">
@@ -55,7 +86,7 @@ class Home extends Component {
                   <label>I agree that this is a valid purchase code from a receipt</label>
                 </div>
               </div>
-              <button type="submit" className="ui button">Enter Shop Code</button>
+              <button type="submit" className="ui button" onClick={this.onSubmit}>Enter Shop Code</button>
             </form>
           </div>
 

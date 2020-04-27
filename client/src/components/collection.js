@@ -7,10 +7,10 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        axios.get("/collection/api/" + this.props.email)
+        axios.get("/collection/api?email=" + this.props.email)
             .then(res => {
                 console.log(res);
-                console.log("hey!@")
+                console.log(res.data)
             });
         console.log("Heyyyy 2!")
     }

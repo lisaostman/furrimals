@@ -56,6 +56,12 @@ class App extends Component {
         email: profile.getEmail()})
           console.log(profile.getName())
 
+          // axios.get("/api/email?email=" + this.state.email)
+          //   .then(res => {
+          //       console.log(res);
+          //       console.log(res.data)
+          //   });
+
           axios.post('/api/create', {
             email: this.state.email
           })
@@ -115,8 +121,7 @@ class App extends Component {
                         </div>
                         ) : (
                           <div className="col-md-12 text-center ui centered yellow inverted titlepg segment"> 
-                              <h2 className="text-center">Welcome to Furrimals!</h2>
-                              <h4>Please login below</h4>
+                              <h1 className="text-center">Welcome to Furrimals!</h1>
                               <br/>
                                               <button className="loginBtn loginBtn--google btn-success" ref="googleLoginBtn">
                                                   Login with Google

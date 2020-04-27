@@ -43,10 +43,12 @@ function objToSql(ob) {
 var orm = {
   caughtCreatures: function(userEmail, cb) {
     var queryString = "SELECT * FROM furrimal_caught";
-    queryString += "INNER JOIN furrimal_animal ON furrimal_animal.animalId=furrimal_caught.animalId";
-    queryString += "INNER JOIN furrimal_user ON furrimal_caught.userId = furrimal_user.userId";
-    queryString += "WHERE furrimal_user.email = ";
+    queryString += " INNER JOIN furrimal_animal ON furrimal_animal.animalId=furrimal_caught.animalId";
+    queryString += " INNER JOIN furrimal_user ON furrimal_caught.userId = furrimal_user.userId";
+    queryString += " WHERE furrimal_user.email = ";
+    queryString += "'";
     queryString += userEmail.toString();
+    queryString += "'";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -71,6 +73,32 @@ var orm = {
     queryString += "INNER JOIN furrimal_user ON furrimal_friends.secondFriend = furrimal_user.userId";
     queryString += "WHERE furrimal_friends.firstUser = ";
     queryString += user1;
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  shopCode: function (code, cb) {
+    var queryString = "SELECT * FROM furrimal_db.furrimal_shops"
+    queryString += " WHERE code = "
+    queryString += "'"
+    queryString += code
+    queryString += "'"
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  userFinder: function (user, cb) {
+    var queryString = "SELECT * FROM furrimal_db.furrimal_user"
+    queryString += " WHERE email = "
+    queryString += "'"
+    queryString += user
+    queryString += "'"
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
