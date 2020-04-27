@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
-// components
+import axios from 'axios';
 import Collection from './components/collection'
 import Leaderboard from './components/leaderboard'
 import Navbar from './components/navbar'
@@ -11,6 +10,7 @@ class App extends Component {
 
   constructor() {
     super();
+    this.loggingOut = this.loggingOut.bind(this)
     this.state = {
       loggedIn: false,
       user: "",
@@ -25,6 +25,15 @@ class App extends Component {
         this.googleSDK();
         console.log('sfsfd');
     }
+
+    loggingOut() {
+      this.setState({loggedIn: false, 
+        user: "", 
+        id: null,
+        token: "", 
+        image: "",
+      email: ""})
+    }
  
     prepareLoginButton = () => {
  
@@ -37,7 +46,8 @@ class App extends Component {
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
-        //YOUR CODE HERE
+        
+        
         this.setState({loggedIn: true, 
           user: profile.getName(), 
           id: profile.getId(),
@@ -45,6 +55,16 @@ class App extends Component {
           image: profile.getImageUrl(),
         email: profile.getEmail()})
           console.log(profile.getName())
+
+          axios.post('/api/create', {
+            email: this.state.email
+          })
+          .then(function (response) {
+            console.log("axios posted " + response)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
  
         }, (error) => {
             alert(JSON.stringify(error, undefined, 2));
@@ -80,7 +100,7 @@ class App extends Component {
  
         return (
           <div className="App">
-          <Navbar loggedIn={this.state.loggedIn}/>
+          <Navbar loggedIn={this.state.loggedIn} loggingOut={this.loggingOut}/>
           <Route
             exact path="/"
             component={() => <Home loggedIn={this.state.loggedIn}  name={this.state.user} />}/>
@@ -94,7 +114,7 @@ class App extends Component {
                       <div>
                         </div>
                         ) : (
-                          <div className="col-md-12 text-center"> 
+                          <div className="col-md-12 text-center ui yellow segment"> 
                               <h2 className="text-center">Welcome to Furrimals!</h2>
                               Please login below ! 
                               <br/>

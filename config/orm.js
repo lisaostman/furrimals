@@ -66,6 +66,19 @@ var orm = {
       cb(result);
     });
   },
+  getShopInfo: function(user1, user2, cb) {
+    var queryString = "SELECT * FROM furrimal_friends";
+    queryString += "INNER JOIN furrimal_user ON furrimal_friends.secondFriend = furrimal_user.userId";
+    queryString += "WHERE furrimal_friends.firstUser = ";
+    queryString += user1;
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  // for posting the user when they are first created, creating new friends, creating new caught creature
    create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 

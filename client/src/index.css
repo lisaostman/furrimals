@@ -1,5 +1,14 @@
+@font-face {
+  font-family: 'BalooTamma2-Bold';
+  src: local('BalooTamma2-Bold'), url(./fonts/BalooTamma2-Bold.ttf) format('truetype');
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'BalooTamma2-Bold';
+}
+
+h1, h2 {
+  font-family: 'BalooTamma2-Bold';
 }

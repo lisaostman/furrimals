@@ -14,7 +14,7 @@ class Navbar extends Component {
     logout(event) {
         event.preventDefault()
         console.log('logging out')
-       
+       this.props.loggingOut();
       }
 
     render() {
@@ -30,7 +30,7 @@ class Navbar extends Component {
                     <div className="col-4 col-mr-auto">
                     <div id="top-filler"></div>
                         <img src={logo} className="App-logo" alt="logo" />
-                        <h1 className="App-title">Furrimals!</h1>
+                        <h1 className="App-title">FURRIMALS</h1>
                     </div>
                     <div className="col-4" >
                         {loggedIn ? (
