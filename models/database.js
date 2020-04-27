@@ -19,7 +19,7 @@ var database = {
     });
   },
   userFinder: function(user, cb) {
-    orm.shopCode(user, function(res) {
+    orm.userFinder(user, function(res) {
       cb(res);
     });
   },

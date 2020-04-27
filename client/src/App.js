@@ -54,24 +54,26 @@ class App extends Component {
           token: googleUser.getAuthResponse().id_token, 
           image: profile.getImageUrl(),
         email: profile.getEmail()})
-          console.log(profile.getName())
 
-          // axios.get("/api/email?email=" + this.state.email)
-          //   .then(res => {
-          //       console.log(res);
-          //       console.log(res.data)
-          //   });
+          console.log(this.state.email)
 
-          axios.post('/api/create', {
-            email: this.state.email
-          })
-          .then(function (response) {
-            console.log("axios posted " + response)
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
- 
+           axios.get("/api/email?email=" + this.state.email)
+            .then(res => {
+                if (res.data.length > 1) {
+                  console.log("User Logged In!")
+                }
+                else {
+                  axios.post('/api/create', {
+                    email: this.state.email
+                  })
+                  .then(function (response) {
+                    console.log("axios posted " + response)
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+                }
+             });
         }, (error) => {
             alert(JSON.stringify(error, undefined, 2));
         });
