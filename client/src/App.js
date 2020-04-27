@@ -100,28 +100,30 @@ class App extends Component {
  
         return (
           <div className="App">
-          <Navbar loggedIn={this.state.loggedIn} loggingOut={this.loggingOut}/>
-          <Route
-            exact path="/"
-            component={() => <Home loggedIn={this.state.loggedIn}  name={this.state.user} />}/>
-            <Route
-            exact path="/collection"
-            component={() => <Collection loggedIn={this.state.loggedIn}  email={this.state.email} />}/>
-            <Route
-            exact path="/leaderboard"
-            component={() => <Leaderboard loggedIn={this.state.loggedIn}  email={this.state.email} />}/>
             {loggedIn ? (
                       <div>
+                        <Navbar loggedIn={this.state.loggedIn} loggingOut={this.loggingOut}/>
+                        <Route
+                          exact path="/"
+                          component={() => <Home loggedIn={this.state.loggedIn}  name={this.state.user} />}/>
+                          <Route
+                          exact path="/collection"
+                          component={() => <Collection loggedIn={this.state.loggedIn}  email={this.state.email} />}/>
+                          <Route
+                          exact path="/leaderboard"
+                          component={() => <Leaderboard loggedIn={this.state.loggedIn}  email={this.state.email} />}/>
                         </div>
                         ) : (
-                          <div className="col-md-12 text-center ui yellow segment"> 
+                          <div className="col-md-12 text-center ui centered yellow inverted titlepg segment"> 
                               <h2 className="text-center">Welcome to Furrimals!</h2>
-                              Please login below ! 
+                              <h4>Please login below</h4>
                               <br/>
                                               <button className="loginBtn loginBtn--google btn-success" ref="googleLoginBtn">
                                                   Login with Google
                                               </button>
-                          </div>
+                                              
+    </div>
+                          
                             )}
             
             </div>

@@ -2,12 +2,10 @@ var express = require("express");
 
 var router = express.Router();
 
-// Import the model (cat.js) to use its database functions.
 var database = require("../models/database.js");
 
-// Create all our routes and set up logic within those routes where required.
 router.post("/api/create", function(req, res) {
-  database.create(furrimal_user,
+  database.create("furrimal_user",
     [
     "email"
   ], [
@@ -36,8 +34,8 @@ router.post("/api/create", function(req, res) {
 // });
 
 router.get("/collection/api/:email", function(req, res) {
-  var condition = req.params.email;
-
+  let condition = req.params.email;
+  console.log("reached router back!")
   database.all(condition, function(result) {
     res.json(result);
   });

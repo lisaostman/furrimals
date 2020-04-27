@@ -46,7 +46,7 @@ var orm = {
     queryString += "INNER JOIN furrimal_animal ON furrimal_animal.animalId=furrimal_caught.animalId";
     queryString += "INNER JOIN furrimal_user ON furrimal_caught.userId = furrimal_user.userId";
     queryString += "WHERE furrimal_user.email = ";
-    queryString += userEmail;
+    queryString += userEmail.toString();
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;

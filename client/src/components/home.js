@@ -47,11 +47,11 @@ class Home extends Component {
             <form className="ui form">
               <div className="field">
                 <label>Shop Creature Code</label>
-                <input placeholder="First Name" />
+                <input placeholder="Shop Code Here i.e SHOP123" />
               </div>
               <div className="field">
                 <div className="ui checkbox">
-                  <input type="checkbox" className="hidden" readonly="" tabindex="0" />
+                  <input type="checkbox" className="hidden"/>
                   <label>I agree that this is a valid purchase code from a receipt</label>
                 </div>
               </div>
