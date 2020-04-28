@@ -36,7 +36,7 @@ class App extends Component {
     }
  
     prepareLoginButton = () => {
- 
+      let currentComponent = this;
     this.auth2.attachClickHandler(this.refs.googleLoginBtn, {},
         (googleUser) => {
  
@@ -59,15 +59,22 @@ class App extends Component {
 
            axios.get("/api/email?email=" + this.state.email)
             .then(res => {
-                if (res.data.length > 1) {
-                  console.log("User Logged In!")
+                if (res.data.length > 0) {
+                  console.log("User Logged In! " + res.data[0].userId)
+                  currentComponent.setState({
+                     id: res.data[0].userId
+                   })
                 }
                 else {
                   axios.post('/api/create', {
                     email: this.state.email
                   })
                   .then(function (response) {
-                    console.log("axios posted " + response)
+                    console.log("axios posted " + JSON.stringify(response))
+                    console.log(response.data.id);
+                    currentComponent.setState({
+                      id: response.data.id
+                    })
                   })
                   .catch(function (error) {
                     console.log(error);
@@ -110,16 +117,27 @@ class App extends Component {
           <div className="App">
             {loggedIn ? (
                       <div>
-                        <Navbar loggedIn={this.state.loggedIn} loggingOut={this.loggingOut}/>
+                        <Navbar 
+                        loggedIn={this.state.loggedIn} 
+                        loggingOut={this.loggingOut}/>
                         <Route
                           exact path="/"
-                          component={() => <Home loggedIn={this.state.loggedIn}  name={this.state.user} />}/>
+                          component={() => <Home 
+                            loggedIn={this.state.loggedIn}  
+                          name={this.state.user} />}/>
                           <Route
                           exact path="/collection"
-                          component={() => <Collection loggedIn={this.state.loggedIn}  email={this.state.email} />}/>
+                          component={() => <Collection 
+                            loggedIn={this.state.loggedIn}  
+                          email={this.state.email} 
+                          user={this.state.user} 
+                          id={this.state.id} 
+                          image={this.state.image}/>}/>
                           <Route
                           exact path="/leaderboard"
-                          component={() => <Leaderboard loggedIn={this.state.loggedIn}  email={this.state.email} />}/>
+                          component={() => <Leaderboard 
+                          loggedIn={this.state.loggedIn}  
+                          email={this.state.email} />}/>
                         </div>
                         ) : (
                           <div className="col-md-12 text-center ui centered yellow inverted titlepg segment"> 
