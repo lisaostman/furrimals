@@ -5,7 +5,8 @@ class Home extends Component {
     constructor() {
         super()
 
-        this.state = {value: ''};
+        this.state = {value: '',
+    message: ''};
         this.onSubmit = this.onSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this);
     }
@@ -17,26 +18,28 @@ class Home extends Component {
       onSubmit(event) {
         event.preventDefault();
         console.log(this.state.value)
-        axios.get("/api/friend?friend=" + this.state.value)
+        axios.get("/api/email?email=" + this.state.value)
         .then(res => {
           if (res.data.length > 0 ) {
             console.log("The above friend emails gives you:")
             console.log(res.data[0])
         
             axios.post('/api/addfriend', {
-              userId: res.data[0].userId,
-              animalId: res.data[0].animalId
+              firstFriend: this.props.id,
+              secondFriend: res.data[0].userId
             })
             .then(function (response) {
-              console.log("creature caught and posted " + response)
-              this.state.value = '';
+              console.log("friend added and posted " + response)
+              this.setState({value: '',
+            message: ''});
             })
             .catch(function (error) {
               console.log(error);
             });
           }
          else {
-           console.log("Friend Not Found")
+           console.log("Friend Not Found");
+           this.setState({message: 'Invalid Friend. Make sure the email is correctly spelled.'});
          }
                 });
       }    
@@ -47,7 +50,6 @@ class Home extends Component {
     render() {
         const loggedIn = this.props.loggedIn;
         const name = this.props.name;
-        console.log(this.props);
         return (
             <div className="col-4" >
                 {loggedIn ? (
@@ -67,8 +69,9 @@ class Home extends Component {
                                             onChange={this.handleChange} />
                                             <i aria-hidden="true" className="user icon"></i>
                                         </div>
+                                        <p>{this.state.message}</p>
                                     </div>
-                                    <button className="ui primary button">Add</button>
+                                    <button className="ui primary button" onClick={this.onSubmit}>Add</button>
                                 </form>
                             </div>
                             <div className="middle aligned column">

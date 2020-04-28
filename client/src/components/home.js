@@ -6,7 +6,8 @@ class Home extends Component {
   constructor() {
     super()
     this.onSubmit = this.onSubmit.bind(this)
-    this.state = {value: ''};
+    this.state = {value: '',
+  message: ''};
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -59,14 +60,16 @@ class Home extends Component {
         })
         .then(function (response) {
           console.log("creature caught and posted " + response)
-          this.setState({value: ''})
+          this.setState({value: '',
+        message: ''})
         })
         .catch(function (error) {
           console.log(error);
         });
       }
      else {
-       console.log("Shop Code Not Valid")
+       console.log("Shop Code Not Valid");
+       this.setState({message: 'Shop Code not valid. Please ensure there are no spaces, letters or symbols.'})
      }
             });
   }
@@ -88,8 +91,7 @@ class Home extends Component {
               </div>
               <div className="field">
                 <div className="ui checkbox">
-                  <input type="checkbox" className="hidden"/>
-                  <label>I agree that this is a valid purchase code from a receipt</label>
+                <p>{this.state.message}</p>
                 </div>
               </div>
               <button type="submit" className="ui button" onClick={this.onSubmit}>Enter Shop Code</button>

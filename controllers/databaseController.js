@@ -30,6 +30,20 @@ router.post("/api/caught", function(req, res) {
   });
 });
 
+router.post("/api/addfriend", function(req, res) {
+  database.create("furrimal_friends",
+    [
+    "firstFriend",
+    "secondFriend"
+  ], [
+    req.body.firstFriend,
+    req.body.secondFriend
+  ], function(result) {
+    // Send back the ID of the new quote
+    res.json({ id: result.insertId });
+  });
+});
+
 // router.put("/api/cats/:id", function(req, res) {
 //   var condition = "id = " + req.params.id;
 
@@ -49,7 +63,6 @@ router.post("/api/caught", function(req, res) {
 
 router.get("/collection/api", function(req, res) {
   let condition = req.query.email;
-  console.log(req);
   console.log("reached router back!")
   database.all(condition, function(result) {
     res.json(result);
@@ -58,7 +71,6 @@ router.get("/collection/api", function(req, res) {
 
 router.get("/api/code", function(req, res) {
   let condition = req.query.code;
-  console.log(req.query);
   console.log("reached router back!")
   database.shopCode(condition, function(result) {
     res.json(result);
@@ -67,7 +79,6 @@ router.get("/api/code", function(req, res) {
 
 router.get("/api/email", function(req, res) {
   let condition = req.query.email;
-  console.log(req.query);
   console.log("reached router back!")
   database.userFinder(condition, function(result) {
     res.json(result);

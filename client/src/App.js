@@ -142,6 +142,7 @@ class App extends Component {
                           <Route
                           exact path="/leaderboard"
                           component={() => <Leaderboard 
+                          id={this.state.id} 
                           loggedIn={this.state.loggedIn}  
                           email={this.state.email} />}/>
                         </div>
