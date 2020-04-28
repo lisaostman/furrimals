@@ -31,7 +31,7 @@ class Home extends Component {
                             <div className="ui red segment">
                             <h2 className="ui right floated header">Statistics</h2>
                             <div className="ui clearing divider"></div>
-                            <img class="ui small circular avatar image" src={this.props.image}></img>
+                            <img className="ui small circular avatar image" src={this.props.image}></img>
                             <span>Welcome to your collection {this.props.user} !<br/>
                             Creatures Collected: {this.state.howMany}</span> 
                         </div>

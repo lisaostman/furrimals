@@ -1,9 +1,45 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 class Home extends Component {
     constructor() {
         super()
+
+        this.state = {value: ''};
+        this.onSubmit = this.onSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+
+      onSubmit(event) {
+        event.preventDefault();
+        console.log(this.state.value)
+        axios.get("/api/friend?friend=" + this.state.value)
+        .then(res => {
+          if (res.data.length > 0 ) {
+            console.log("The above friend emails gives you:")
+            console.log(res.data[0])
+        
+            axios.post('/api/addfriend', {
+              userId: res.data[0].userId,
+              animalId: res.data[0].animalId
+            })
+            .then(function (response) {
+              console.log("creature caught and posted " + response)
+              this.state.value = '';
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+          }
+         else {
+           console.log("Friend Not Found")
+         }
+                });
+      }    
 
     componentDidMount() {
     }
@@ -25,7 +61,10 @@ class Home extends Component {
                                     <div className="field">
                                         <label>Add Friend</label>
                                         <div className="ui left icon input">
-                                            <input type="text" placeholder="Friend's Email" />
+                                            <input type="text" 
+                                            placeholder="Friend's Email" 
+                                            value={this.state.value} 
+                                            onChange={this.handleChange} />
                                             <i aria-hidden="true" className="user icon"></i>
                                         </div>
                                     </div>

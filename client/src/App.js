@@ -32,7 +32,12 @@ class App extends Component {
         id: null,
         token: "", 
         image: "",
-      email: ""})
+      email: ""});
+      var auth2 = window['gapi'].auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+      window.location.reload();
     }
  
     prepareLoginButton = () => {
@@ -124,7 +129,8 @@ class App extends Component {
                           exact path="/"
                           component={() => <Home 
                             loggedIn={this.state.loggedIn}  
-                          name={this.state.user} />}/>
+                          name={this.state.user} 
+                          id = {this.state.id}/>}/>
                           <Route
                           exact path="/collection"
                           component={() => <Collection 

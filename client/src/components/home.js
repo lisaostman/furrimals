@@ -48,20 +48,26 @@ class Home extends Component {
     console.log(this.state.value)
     axios.get("/api/code?code=" + this.state.value)
     .then(res => {
-    console.log(res.data[0].animalId)
-    console.log(res.data[0].userId)
-
-    axios.post('/api/caught', {
-      userId: res.data[0].userId,
-      animalId: res.data[0].animalId
-    })
-    .then(function (response) {
-      console.log("axios posted " + response)
-      this.state.value = '';
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      if (res.data.length > 0 ) {
+        console.log("The above shop code gives you:")
+        console.log(res.data[0].animalId)
+        console.log(this.props.id)
+    
+        axios.post('/api/caught', {
+          userId: this.props.id,
+          animalId: res.data[0].animalId
+        })
+        .then(function (response) {
+          console.log("creature caught and posted " + response)
+          this.setState({value: ''})
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+     else {
+       console.log("Shop Code Not Valid")
+     }
             });
   }
 
