@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from '../logo.png';
-import { Button } from '@material-ui/core';
 import '../App.css';
 
 class Navbar extends Component {

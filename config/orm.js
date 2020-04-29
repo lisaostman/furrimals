@@ -56,11 +56,13 @@ var orm = {
       cb(result);
     });
   },
-  findFriend: function(user1, user2, cb) {
+  findFriend: function(id, cb) {
     var queryString = "SELECT * FROM furrimal_friends";
-    queryString += "INNER JOIN furrimal_user ON furrimal_friends.secondFriend = furrimal_user.userId";
-    queryString += "WHERE furrimal_friends.firstUser = ";
-    queryString += user1;
+    queryString += " INNER JOIN furrimal_user ON furrimal_friends.secondFriend = furrimal_user.userId";
+    queryString += " INNER JOIN furrimal_caught ON furrimal_friends.secondFriend = furrimal_caught.userId"
+    queryString += " INNER JOIN furrimal_animal ON furrimal_caught.animalId = furrimal_animal.animalId"
+    queryString += " WHERE furrimal_friends.firstFriend = ";
+    queryString += id;
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;

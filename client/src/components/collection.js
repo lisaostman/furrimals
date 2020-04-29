@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CreatureCard from "./CreatureCard";
 import axios from 'axios';
 
-class Home extends Component {
+class Collection extends Component {
     constructor() {
         super()
         this.state = {
@@ -67,4 +67,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default Collection

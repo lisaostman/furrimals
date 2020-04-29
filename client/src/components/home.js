@@ -45,6 +45,7 @@ class Home extends Component {
   }
 
   onSubmit(event) {
+    let currentComponent = this;
     event.preventDefault();
     console.log(this.state.value)
     axios.get("/api/code?code=" + this.state.value)
@@ -60,7 +61,7 @@ class Home extends Component {
         })
         .then(function (response) {
           console.log("creature caught and posted " + response)
-          this.setState({value: '',
+          currentComponent.setState({value: '',
         message: ''})
         })
         .catch(function (error) {

@@ -18,6 +18,11 @@ var database = {
       cb(res);
     });
   },
+  findFriend: function(id, cb) {
+    orm.findFriend(id, function(res) {
+      cb(res);
+    });
+  },
   userFinder: function(user, cb) {
     orm.userFinder(user, function(res) {
       cb(res);

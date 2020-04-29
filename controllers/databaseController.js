@@ -77,6 +77,14 @@ router.get("/api/code", function(req, res) {
   });
 });
 
+ router.get("/api/seconduser", function(req, res) {
+   let condition = req.query.seconduser;
+   console.log("reached router back!")
+   database.findFriend(condition, function(result) {
+     res.json(result);
+   });
+ });
+
 router.get("/api/email", function(req, res) {
   let condition = req.query.email;
   console.log("reached router back!")

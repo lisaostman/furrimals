@@ -5,6 +5,7 @@ import Collection from './components/collection'
 import Leaderboard from './components/leaderboard'
 import Navbar from './components/navbar'
 import Home from './components/home'
+import Friends from './components/friends'
  
 class App extends Component {
 
@@ -145,6 +146,12 @@ class App extends Component {
                           id={this.state.id} 
                           loggedIn={this.state.loggedIn}  
                           email={this.state.email} />}/>
+                           <Route
+                          exact path="/friends"
+                          component={() => <Friends
+                            loggedIn={this.state.loggedIn}  
+                            email={this.state.email} 
+                            id={this.state.id} />}/>
                         </div>
                         ) : (
                           <div className="col-md-12 text-center ui centered yellow inverted titlepg segment"> 

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
-class Home extends Component {
+class Leaderboard extends Component {
     constructor() {
         super()
 
@@ -16,6 +17,7 @@ class Home extends Component {
       }
 
       onSubmit(event) {
+          let currentComponent = this;
         event.preventDefault();
         console.log(this.state.value)
         axios.get("/api/email?email=" + this.state.value)
@@ -30,7 +32,7 @@ class Home extends Component {
             })
             .then(function (response) {
               console.log("friend added and posted " + response)
-              this.setState({value: '',
+              currentComponent.setState({value: '',
             message: ''});
             })
             .catch(function (error) {
@@ -39,7 +41,7 @@ class Home extends Component {
           }
          else {
            console.log("Friend Not Found");
-           this.setState({message: 'Invalid Friend. Make sure the email is correctly spelled.'});
+           currentComponent.setState({message: 'Invalid Friend. Make sure the email is correctly spelled.'});
          }
                 });
       }    
@@ -75,10 +77,10 @@ class Home extends Component {
                                 </form>
                             </div>
                             <div className="middle aligned column">
-                                <button className="ui big button">
+                                <Link to="/friends" className="ui big button">
                                     <i aria-hidden="true" className="signup icon"></i>
                                     View Friends List
-                                    </button>
+                                    </Link>
                             </div>
                         </div>
                         <div className="ui vertical divider">Or</div>
@@ -98,4 +100,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default Leaderboard
