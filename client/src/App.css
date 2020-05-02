@@ -25,6 +25,19 @@
   
 }
 
+.yellowbg {
+  background-color: rgb(252, 252, 106) !important;
+}
+
+.introparagraph {
+  font-family: 'BalooTamma2';
+  text-align: center;
+}
+
+.orangebg {
+  background-color: rgb(253, 177, 34) !important;
+}
+
 .btn-warning {
   padding: 10px 10px 0px 10px;
   margin: 0px 2px 0px 0px;

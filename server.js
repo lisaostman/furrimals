@@ -12,6 +12,7 @@ if (process.env.NODE_ENV === "production") {
 
 
 app.use(routes);
+app.on('error', function(err) {"This is the bad error " + err});
 
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import '../App.css';
 
 class Leaderboard extends Component {
     constructor() {
@@ -58,8 +59,8 @@ class Leaderboard extends Component {
                     <div>
                     <p>Welcome {name} !</p>
 
-                    <div className="ui placeholder segment">
-                        <div className="ui stackable very relaxed two column grid">
+                    <div className="ui placeholder segment orangebg">
+                        <div className="ui stackable very relaxed two column grid yellowbg">
                             <div className="column">
                                 <form className="ui form">
                                     <div className="field">

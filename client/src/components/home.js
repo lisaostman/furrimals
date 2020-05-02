@@ -86,8 +86,18 @@ class Home extends Component {
     return (
       <div className="col-4" >
         {loggedIn ? (
-          <div className="col-md-12 text-center ui green segment">
+          <div className="col-md-12 text-center ui green segment yellowbg">
             <h2 className="text-center">Welcome to Furrimals {name}!</h2>
+            <p className="col-md-3"> </p>
+            <p className="introparagraph col-md-6 text-center ui green segment">
+              Ever seen a shadow fly passed your eye, only to turn around to find nothing there? Then you might have caught
+              glimpse of a furrimal! These loveable, tiny creatures live all over the world, and hide in the tiniest of places,
+              but they all have their unique locations they love to hide! For example, you might catch a pixie in your local market
+              or a creature hiding in your coffee! Collect the secret codes given to you on your receipts to catch these loveable creatures,
+              and view the creatures your friends have found! Find as many as you can, and as many types, and you can earn rewards like
+              badges or discount codes for future creature hunting. Get exploring!
+            </p>
+            <p className="col-md-3"> </p>
             <br></br>
             <form className="ui form">
               <div className="field">

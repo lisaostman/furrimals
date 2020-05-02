@@ -42,7 +42,7 @@ class Navbar extends Component {
                                 <Link to="/leaderboard" className="btn btn-warning">
                                 <span className="text-secondary">leaderboard</span>
                                 </Link>
-                                <Link to="/" className="btn btn-warning" onClick={this.logout}>
+                                <Link to="/leaderboard" className="btn btn-warning" onClick={this.logout}>
                                 <span className="text-secondary">logout</span>
                                 </Link>
                             </section>
