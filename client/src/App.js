@@ -53,7 +53,7 @@ class App extends Component {
     prepareLoginButton = () => {
       let currentComponent = this;
       var auth2 = window['gapi'].auth2.getAuthInstance();
-      auth2.signOut().then(function () {
+      this.auth2.signOut().then(function () {
         console.log('User signed out.');
       });
     this.auth2.attachClickHandler(this.refs.googleLoginBtn, {},
