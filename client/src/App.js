@@ -23,26 +23,39 @@ class App extends Component {
   }
  
     componentDidMount() {
+      if (localStorage.getItem('key')) {
+        let profile = JSON.parse(localStorage.getItem('profile'))
+        this.setState({loggedIn: true,
+        user: profile.user,
+      token: profile.token,
+        id: profile.id,
+        image: profile.image,
+        email: profile.email});
+
+      } else {
+        this.setState({loggedIn: false});
         this.googleSDK();
+      }
         console.log('sfsfd');
     }
 
     loggingOut() {
+      localStorage.clear()
       this.setState({loggedIn: false, 
         user: "", 
         id: null,
         token: "", 
         image: "",
       email: ""});
-      var auth2 = window['gapi'].auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        console.log('User signed out.');
-      });
       window.location.reload();
     }
  
     prepareLoginButton = () => {
       let currentComponent = this;
+      var auth2 = window['gapi'].auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
     this.auth2.attachClickHandler(this.refs.googleLoginBtn, {},
         (googleUser) => {
  
@@ -62,6 +75,10 @@ class App extends Component {
         email: profile.getEmail()})
 
           console.log(this.state.email)
+          localStorage.setItem('key', JSON.stringify(this.state.token));
+          console.log(this.state);
+          localStorage.setItem('profile', JSON.stringify(this.state));
+          let x = JSON.parse(localStorage.getItem('key'));
 
            axios.get("/api/email?email=" + this.state.email)
             .then(res => {

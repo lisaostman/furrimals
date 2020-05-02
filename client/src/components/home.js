@@ -17,8 +17,11 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.googleSDK();
-    console.log('sfsfd');
+    const loggedIn = this.props.loggedIn;
+    if (loggedIn === true){
+      console.log('sfsfd');
+    }
+    else {this.googleSDK();}
   }
 
   googleSDK = () => {
@@ -30,6 +33,7 @@ class Home extends Component {
           cookiepolicy: 'single_host_origin',
           scope: 'profile email'
         });
+
         this.prepareLoginButton();
       });
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 import '../App.css';
 
@@ -10,7 +10,7 @@ class Navbar extends Component {
     }
 
     logout(event) {
-        event.preventDefault()
+        event.preventDefault();
         console.log('logging out')
        this.props.loggingOut();
       }
@@ -42,8 +42,9 @@ class Navbar extends Component {
                                 <Link to="/leaderboard" className="btn btn-warning">
                                 <span className="text-secondary">leaderboard</span>
                                 </Link>
-                                <Link to="#" className="btn btn-warning" onClick={this.logout}>
-                                <span className="text-secondary">logout</span></Link>
+                                <Link to="/" className="btn btn-warning" onClick={this.logout}>
+                                <span className="text-secondary">logout</span>
+                                </Link>
                             </section>
                         ) : (
                                 <section className="navbar-section">
