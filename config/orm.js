@@ -83,7 +83,7 @@ var orm = {
     });
   },
   shopCode: function (code, cb) {
-    var queryString = "SELECT * FROM furrimal_db.furrimal_shops"
+    var queryString = "SELECT * FROM heroku_0230244429e8955.furrimal_shops"
     queryString += " WHERE code = "
     queryString += "'"
     queryString += code
@@ -96,7 +96,7 @@ var orm = {
     });
   },
   userFinder: function (user, cb) {
-    var queryString = "SELECT * FROM furrimal_db.furrimal_user"
+    var queryString = "SELECT * FROM heroku_0230244429e8955.furrimal_user"
     queryString += " WHERE email = "
     queryString += "'"
     queryString += user
