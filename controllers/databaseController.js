@@ -4,7 +4,7 @@ var router = express.Router();
 
 var database = require("../models/database.js");
 
-router.post("/api/create", function(req, res) {
+router.post("https://furrimals.herokuapp.com/api/create", function(req, res) {
   database.create("furrimal_user",
     [
     "email"
@@ -16,7 +16,7 @@ router.post("/api/create", function(req, res) {
   });
 });
 
-router.post("/api/caught", function(req, res) {
+router.post("https://furrimals.herokuapp.com/api/caught", function(req, res) {
   database.create("furrimal_caught",
     [
     "userId",
@@ -30,7 +30,7 @@ router.post("/api/caught", function(req, res) {
   });
 });
 
-router.post("/api/addfriend", function(req, res) {
+router.post("https://furrimals.herokuapp.com/api/addfriend", function(req, res) {
   database.create("furrimal_friends",
     [
     "firstFriend",
@@ -61,7 +61,7 @@ router.post("/api/addfriend", function(req, res) {
 //   });
 // });
 
-router.get("/collection/api", function(req, res) {
+router.get("https://furrimals.herokuapp.com/collection/api", function(req, res) {
   let condition = req.query.email;
   console.log("reached router back!")
   database.all(condition, function(result) {
@@ -69,7 +69,7 @@ router.get("/collection/api", function(req, res) {
   });
 });
 
-router.get("/api/code", function(req, res) {
+router.get("https://furrimals.herokuapp.com/api/code", function(req, res) {
   let condition = req.query.code;
   console.log("reached router back!")
   database.shopCode(condition, function(result) {
@@ -77,7 +77,7 @@ router.get("/api/code", function(req, res) {
   });
 });
 
- router.get("/api/seconduser", function(req, res) {
+ router.get("https://furrimals.herokuapp.com/api/seconduser", function(req, res) {
    let condition = req.query.seconduser;
    console.log("reached router back!")
    database.findFriend(condition, function(result) {
@@ -85,7 +85,7 @@ router.get("/api/code", function(req, res) {
    });
  });
 
-router.get("/api/email", function(req, res) {
+router.get("https://furrimals.herokuapp.com/api/email", function(req, res) {
   let condition = req.query.email;
   console.log("reached router back!")
   database.userFinder(condition, function(result) {
