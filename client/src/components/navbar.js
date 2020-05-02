@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../logo.png';
+import logo from '../assets/images/logo.png';
 import '../App.css';
 
 class Navbar extends Component {
@@ -49,7 +49,6 @@ class Navbar extends Component {
                                 <section className="navbar-section">
                                     <Link to="/" className="btn btn-warning text-secondary">
                                         <span className="text-secondary">home</span>
-                                        {/* <Button color="primary">Hello World</Button> */}
                                         </Link>
                                 </section>
                             )}
