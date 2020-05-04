@@ -49,6 +49,7 @@ var orm = {
     queryString += "'";
     queryString += userEmail.toString();
     queryString += "'";
+    queryString += ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -63,6 +64,7 @@ var orm = {
     queryString += " INNER JOIN furrimal_animal ON furrimal_caught.animalId = furrimal_animal.animalId"
     queryString += " WHERE furrimal_friends.firstFriend = ";
     queryString += id;
+    queryString += ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -75,6 +77,7 @@ var orm = {
     queryString += "INNER JOIN furrimal_user ON furrimal_friends.secondFriend = furrimal_user.userId";
     queryString += "WHERE furrimal_friends.firstUser = ";
     queryString += user1;
+    queryString += ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -88,6 +91,7 @@ var orm = {
     queryString += "'"
     queryString += code
     queryString += "'"
+    queryString += ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -101,6 +105,7 @@ var orm = {
     queryString += "'"
     queryString += user
     queryString += "'"
+    queryString += ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -118,6 +123,7 @@ var orm = {
     queryString += "VALUES (";
     queryString += printQuestionMarks(vals.length);
     queryString += ") ";
+    queryString += ";";
 
     console.log(queryString);
 
@@ -133,6 +139,7 @@ var orm = {
     var queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;
+    queryString += ";";
 
     connection.query(queryString, function(err, result) {
       if (err) {
