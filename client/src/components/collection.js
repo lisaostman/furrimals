@@ -24,7 +24,6 @@ class Collection extends Component {
 
     render() {
         const loggedIn = this.props.loggedIn;
-        const email = this.props.email;
         console.log(this.props);
         return (
             <div className="col-4" >
@@ -33,7 +32,7 @@ class Collection extends Component {
                         <div className="ui red segment yellowbg">
                             <h2 className="ui right floated header">Statistics</h2>
                             <div className="ui clearing divider"></div>
-                            <img className="ui small circular avatar image" src={this.props.image}></img>
+                            <img className="ui small circular avatar image" src={this.props.image} alt="Google User avatar"></img>
                             <span>Welcome to your collection {this.props.user} !<br />
                                 Creatures Collected: {this.state.howMany}</span>
                         </div>

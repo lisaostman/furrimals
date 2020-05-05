@@ -13,7 +13,8 @@ class Home extends Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({value: event.target.value,
+    message: ''});
   }
 
   componentDidMount() {
@@ -66,7 +67,7 @@ class Home extends Component {
         .then(function (response) {
           console.log("creature caught and posted " + response)
           currentComponent.setState({value: '',
-        message: ''})
+        message: 'Congratulations! You have successfully caught a furrimal!'})
         })
         .catch(function (error) {
           console.log(error);
@@ -90,6 +91,7 @@ class Home extends Component {
             <h2 className="text-center">Welcome to Furrimals {name}!</h2>
             <p className="col-md-3"> </p>
             <p className="introparagraph col-md-6 text-center ui green segment">
+              <img src={require('../assets/images/Group.png')} width="500px"></img><br></br>
               Ever seen a shadow fly passed your eye, only to turn around to find nothing there? Then you might have caught
               glimpse of a furrimal! These loveable, tiny creatures live all over the world, and hide in the tiniest of places,
               but they all have their unique locations they love to hide! For example, you might catch a pixie in your local market
@@ -102,7 +104,7 @@ class Home extends Component {
             <form className="ui form">
               <div className="field">
                 <label>Shop Creature Code</label>
-                <input placeholder="Shop Code Here i.e SHOP123"  value={this.state.value} onChange={this.handleChange} />
+                <input placeholder="Shop Code Here i.e SHOP123"  value={this.state.value} onChange={this.handleChange} className="inputter"/>
               </div>
               <div className="field">
                 <div className="ui checkbox">

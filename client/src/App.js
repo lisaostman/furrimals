@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import axios from 'axios';
 import Collection from './components/collection'
 import Leaderboard from './components/leaderboard'
@@ -78,7 +78,6 @@ class App extends Component {
           localStorage.setItem('key', JSON.stringify(this.state.token));
           console.log(this.state);
           localStorage.setItem('profile', JSON.stringify(this.state));
-          let x = JSON.parse(localStorage.getItem('key'));
 
            axios.get("/api/email?email=" + this.state.email)
             .then(res => {

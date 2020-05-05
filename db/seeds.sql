@@ -8,7 +8,8 @@ INSERT INTO furrimal_shops (name, code, animalId) VALUES ('Cotton On', 2468, 2);
 INSERT INTO furrimal_shops (name, code, animalId) VALUES ('Red Balloon', 369, 3);
 INSERT INTO furrimal_animal (name, animalType) VALUES ('Strawberry Fairy', 'Market');
 INSERT INTO furrimal_shops (name, code, animalId) VALUES ('Harris Farmers Market', 2345, 4);
-
+INSERT INTO furrimal_animal (name, animalType) VALUES ('Pygmy Possum', 'Restaurant');
+INSERT INTO furrimal_shops (name, code, animalId) VALUES ('Japanese TakeAway', 5678, 41);
 
 -- SELECT * 
 -- FROM furrimal_db.furrimal_shops
