@@ -20,6 +20,7 @@ class App extends Component {
       image: "",
       email: ""
     };
+
   }
  
     componentDidMount() {
@@ -47,7 +48,6 @@ class App extends Component {
         token: "", 
         image: "",
       email: ""});
-      window.location.reload();
     }
  
     prepareLoginButton = () => {
