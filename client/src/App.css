@@ -38,6 +38,10 @@
   width: 50% !important;
 }
 
+.loginBtn {
+  width: 20%;
+}
+
 .orangebg {
   background-color: rgb(253, 177, 34) !important;
 }

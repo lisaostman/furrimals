@@ -14,7 +14,6 @@ class Friends extends Component {
     componentDidMount() {
         let currentComponent = this;
         console.log(this.props.email);
-        console.log(this.props.id)
         axios.get("/api/seconduser?seconduser=" + this.props.id)
             .then(res => {
                  console.log(res.data)
@@ -22,6 +21,15 @@ class Friends extends Component {
                      friends: res.data,
                      howMany: res.data.length
                  })
+                 let friends = res.data.length;
+                 axios.get("/collection/api?email=" + this.props.email)
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+                    creatures: res.data,
+                    howMany: friends + res.data.length
+                })
+            });
              });
 
     }
