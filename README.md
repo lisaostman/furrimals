@@ -21,6 +21,7 @@ Features:
  * Viewing friends' collected creatures
  
 ## What Does it look like?
+Have a look for yourself here: [Link](https://furrimals.herokuapp.com/)
 ![Image](https://github.com/lisaostman/furrimals/blob/master/client/src/assets/images/Group.png)
 
-Have a look for yourself here: [Link](https://furrimals.herokuapp.com/)
+
