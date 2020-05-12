@@ -20,6 +20,15 @@ Features:
  * Adding friends
  * Viewing friends' collected creatures
  
+ ## How to Use:
+Sign in using your Google account.
+Shop codes available to be entered to collect your creatures: 
+ * 1234
+ * 369
+ * 2345
+ * 2468
+ * 5678
+ 
 ## What Does it look like?
 Have a look for yourself here: [Link](https://furrimals.herokuapp.com/)
 ![Image](https://github.com/lisaostman/furrimals/blob/master/client/src/assets/images/Group.png)
