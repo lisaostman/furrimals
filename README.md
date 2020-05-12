@@ -29,6 +29,27 @@ Shop codes available to be entered to collect your creatures:
  * 2468
  * 5678
  
+ ### Prerequisites
+
+What things you need to install the software and how to install them
+
+```
+To run this application on your computer, you need npm and a mySQL workbench to act as your local host.
+```
+
+### Installing
+To run on your own computer:
+
+```
+Npm install necessary add-ons, npm start, edit the config connection file to meet your local MySQL database, seed the database using the schema and seed file.
+```
+
+## Built With
+
+* [React.js](https://reactjs.org/) - The web framework used
+* [Heroku](https://www.heroku.com/) - Place of Deployment
+* [Google User Authorisation](https://developers.google.com/identity/sign-in/web/sign-in) - Google User Authentication
+
 ## What Does it look like?
 Have a look for yourself here: [Link](https://furrimals.herokuapp.com/)
 ![Image](https://github.com/lisaostman/furrimals/blob/master/client/src/assets/images/Group.png)
