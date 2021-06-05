@@ -28,6 +28,7 @@ Shop codes available to be entered to collect your creatures:
  * 2345
  * 2468
  * 5678
+Feel free to test out the friends list by adding my email! : peolinao@gmail.com :)
  
  ### Prerequisites
 
