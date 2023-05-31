@@ -52,7 +52,7 @@ Npm install necessary add-ons, npm start, edit the config connection file to mee
 * [Google User Authorisation](https://developers.google.com/identity/sign-in/web/sign-in) - Google User Authentication
 
 ## What Does it look like?
-Have a look for yourself here: [Link](https://furrimals.herokuapp.com/)
+Have a look for yourself here: [Link](https://furrimals-2.herokuapp.com/)
 ![Image](https://github.com/lisaostman/furrimals/blob/master/client/src/assets/images/Group.png)
 
 
